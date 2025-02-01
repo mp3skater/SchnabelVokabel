@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hsqldb">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/java/net/mp3skater/schnabelvokabel/model/RohdateienJava/RohdateienJava/Rohdateien/src/net/tfobz/vokabeltrainer/model/hsqldb.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
