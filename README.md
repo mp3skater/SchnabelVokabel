@@ -1,9 +1,8 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" align="center" width="30%">
+    <img src="https://github.com/mp3skater/SchnabelVokabel/blob/5da56497b39d6c66102fb257d4abf550f60ea91d/src/main/java/net/mp3skater/schnabelvokabel/view/icons/logo.png" align="center" width="30%">
 </p>
-<p align="center"><h1 align="center">SCHNABELVOKABEL</h1></p>
 <p align="center">
-	<em><code>❯ REPLACE-ME</code></em>
+	<em><code>❯ TO-COPY-AND-PASTE ;)</code></em>
 </p>
 <p align="center">
 	<img src="https://img.shields.io/github/license/mp3skater/SchnabelVokabel?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
@@ -38,13 +37,13 @@
 
 ## 📍 Overview
 
-<code>❯ REPLACE-ME</code>
+<code>❯ This project took me way to much headaches and time for my own good. Please let the students choose the language the next time so it'll be their fault. Also this is nearly all generated, oh yeah and do with it what you want!</code>
 
 ---
 
 ## 👾 Features
 
-<code>❯ REPLACE-ME</code>
+<code>❯ something</code>
 
 ---
 
