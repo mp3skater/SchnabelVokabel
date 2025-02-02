@@ -6,7 +6,7 @@ import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdate
 import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdateien.src.net.tfobz.vokabeltrainer.model.Lernkartei;
 import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdateien.src.net.tfobz.vokabeltrainer.model.VokabeltrainerDB;
 import net.mp3skater.schnabelvokabel.view.panels.BasePanel;
-import net.mp3skater.schnabelvokabel.view.panels.KarteienPanel;
+import net.mp3skater.schnabelvokabel.view.panels.FaecherPanel;
 import net.mp3skater.schnabelvokabel.view.panels.NavigationController;
 
 import javax.swing.*;
@@ -69,7 +69,7 @@ public class DictionaryButton extends JButton {
 
 		addActionListener(e -> {
 			AppState.getInstance().setCurrentKarteiNummer(nummer);
-			KarteienPanel panel = new KarteienPanel();
+			FaecherPanel panel = new FaecherPanel();
 			panel.update();
 			NavigationController.getInstance().navigateTo("karteien");
 		});

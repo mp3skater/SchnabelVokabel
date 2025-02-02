@@ -6,6 +6,7 @@ public class AppState {
     private boolean checkCapitalization;
     private int currentKarteiNummer;
     private int currentFach;
+    private String lastGuess;
 
     private AppState() {}
 

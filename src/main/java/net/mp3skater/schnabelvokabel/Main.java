@@ -28,7 +28,7 @@ public class Main {
             ImportPanel importPanel = new ImportPanel();
             LoadPanel loadPanel = new LoadPanel();
             TrainingModePanel trainingModePanel = new TrainingModePanel();
-            KarteienPanel karteienPanel = new KarteienPanel();
+            FaecherPanel karteienPanel = new FaecherPanel();
             ExportScreenPanel exportScreenPanel = new ExportScreenPanel();
 
             // Add panels to the main panel with their respective names
@@ -50,7 +50,6 @@ public class Main {
             updatableCards.put("load", loadPanel);
             updatableCards.put("trainingMode", trainingModePanel);
             updatableCards.put("karteien", karteienPanel);
-            updatableCards.put("exportScreen", exportScreenPanel);
 
             // Initialize NavigationController with the map
             NavigationController.initialize(cardLayout, mainPanel, "mainMenu", updatableCards);
