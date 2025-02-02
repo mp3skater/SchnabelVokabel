@@ -30,6 +30,9 @@ public class Main {
             TrainingModePanel trainingModePanel = new TrainingModePanel();
             FaecherPanel karteienPanel = new FaecherPanel();
             ExportScreenPanel exportScreenPanel = new ExportScreenPanel();
+            EditPanel editPanel = new EditPanel();
+            NewKarteiPanel newKartei = new NewKarteiPanel();
+            DeleteKarteiPanel deleteKartei = new DeleteKarteiPanel();
 
             // Add panels to the main panel with their respective names
             mainPanel.add(mainMenuPanel, "mainMenu");
@@ -40,6 +43,9 @@ public class Main {
             mainPanel.add(trainingModePanel, "trainingMode");
             mainPanel.add(karteienPanel, "karteien");
             mainPanel.add(exportScreenPanel, "exportScreen");
+            mainPanel.add(editPanel, "editPanel");
+            mainPanel.add(newKartei, "newKartei");
+            mainPanel.add(deleteKartei, "deleteKartei");
 
             // Create a map from card names to Updatable panels
             Map<String, Updatable> updatableCards = new HashMap<>();
@@ -50,6 +56,9 @@ public class Main {
             updatableCards.put("load", loadPanel);
             updatableCards.put("trainingMode", trainingModePanel);
             updatableCards.put("karteien", karteienPanel);
+            updatableCards.put("editPanel", editPanel);
+            updatableCards.put("newKartei", newKartei);
+            updatableCards.put("deleteKartei", deleteKartei);
 
             // Initialize NavigationController with the map
             NavigationController.initialize(cardLayout, mainPanel, "mainMenu", updatableCards);

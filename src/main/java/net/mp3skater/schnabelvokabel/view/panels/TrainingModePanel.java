@@ -25,11 +25,6 @@ public class TrainingModePanel extends BasePanel {
     private Karte karte;
     private ArrayList<Fach> faches;
 
-    public TrainingModePanel() {
-        setLayout(null);
-        setPreferredSize(new Dimension(720, 770));
-    }
-
     @Override
     public void update() {
         removeAll();

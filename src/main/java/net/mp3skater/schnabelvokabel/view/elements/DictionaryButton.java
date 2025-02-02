@@ -67,12 +67,14 @@ public class DictionaryButton extends JButton {
 		language2.setBounds(260, 30, 100, 25);
 		add(language2);
 
-		addActionListener(e -> {
-			AppState.getInstance().setCurrentKarteiNummer(nummer);
-			FaecherPanel panel = new FaecherPanel();
-			panel.update();
-			NavigationController.getInstance().navigateTo("karteien");
-		});
+		addActionListener(e -> action());
+	}
+
+	protected void action() {
+		AppState.getInstance().setCurrentKarteiNummer(nummer);
+		FaecherPanel panel = new FaecherPanel();
+		panel.update();
+		NavigationController.getInstance().navigateTo("karteien");
 	}
 	
 	private int getVocabs() {
