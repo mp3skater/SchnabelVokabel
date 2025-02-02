@@ -37,7 +37,7 @@
 
 ## 📍 Overview
 
-<code>❯ This project took me way to much headaches and time for my own good. Please let the students choose the language the next time so it'll be their fault. Also this is nearly all generated, oh yeah and do with it what you want!</code>
+<code>❯ This project took me way to much headaches and time for my own good. Please let the students choose the language the next time so it'll be their fault. Also this is nearly all generated (readme), oh yeah and do with it what you want!</code>
 
 ---
 
