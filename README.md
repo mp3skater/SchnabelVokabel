@@ -52,6 +52,8 @@
 
 ```sh
 └── SchnabelVokabel/
+    ├── LICENSE
+    ├── README.md
     ├── SchnabelVokabel.iml
     ├── lernkarteien.properties
     ├── lernkarteien.script
