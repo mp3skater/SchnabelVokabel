@@ -16,5 +16,6 @@ public class BaseButton extends JButton {
 		this.setBorder(new LineBorder(Colors.COLOR1.color,4));
 		this.setText(message);
 		this.addMouseListener(new BaseButtonHover());
+		this.setVisible(true);
 	}
 }

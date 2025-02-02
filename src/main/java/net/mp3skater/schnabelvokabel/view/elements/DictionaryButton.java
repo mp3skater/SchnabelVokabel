@@ -1,9 +1,13 @@
-package net.mp3skater.schnabelvokabel.view.panels;
+package net.mp3skater.schnabelvokabel.view.elements;
 
 
+import net.mp3skater.schnabelvokabel.model.AppState;
 import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdateien.src.net.tfobz.vokabeltrainer.model.Fach;
 import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdateien.src.net.tfobz.vokabeltrainer.model.Lernkartei;
 import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdateien.src.net.tfobz.vokabeltrainer.model.VokabeltrainerDB;
+import net.mp3skater.schnabelvokabel.view.panels.BasePanel;
+import net.mp3skater.schnabelvokabel.view.panels.KarteienPanel;
+import net.mp3skater.schnabelvokabel.view.panels.NavigationController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +16,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 
-public class Dictionaries extends JPanel {
+public class DictionaryButton extends JButton {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<String> vocabList;
@@ -21,7 +25,7 @@ public class Dictionaries extends JPanel {
 	private JLabel vocabs;
 	public final static int ADD = 0;
 	public final static int CHOOSE = 1;
-	private final int thisIs;
+	private int thisIs = 0;
 	private File file;
 	private final JLabel plus = new JLabel();
 	private MouseListenerAdd add = new MouseListenerAdd();
@@ -32,12 +36,12 @@ public class Dictionaries extends JPanel {
 	 */
 	private BasePanel parentPanel; // Reference to the parent panel
 
-	public Dictionaries(Rectangle r, final int nummer, String nameB, String language1B, String language2B,
-											BasePanel parentPanel, Lernkartei kartei, File file) {
+	public DictionaryButton(Rectangle r, final int nummer, String nameB, String language1B, String language2B,
+													BasePanel parentPanel, Lernkartei kartei, File file) {
 		thisIs = ADD;
 		setBounds(r);
 		setLayout(null);
-		setBorder(BorderFactory.createLineBorder(new Color(100,205,170),4));
+		setBorder(BorderFactory.createLineBorder(Colors.COLOR1.color));
 		this.nummer = nummer;
 		this.parentPanel = parentPanel;
 		this.kartei = kartei;
@@ -63,21 +67,12 @@ public class Dictionaries extends JPanel {
 		language2.setBounds(260, 30, 100, 25);
 		add(language2);
 
-		/*
-		plus.setFont(new Font("Amiri", Font.PLAIN, 50));
-		plus.setHorizontalAlignment(SwingConstants.CENTER);
-		plus.setBorder(BorderFactory.createLineBorder(Color.black));
-		plus.setBounds(360, 8, 45, 45);
-		add(plus);
-
-		// Add a MouseListener to the "plus" label
-		plus.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				showOptionsDialog(plus.getLocationOnScreen(), nummer);
-			}
+		addActionListener(e -> {
+			AppState.getInstance().setCurrentKarteiNummer(nummer);
+			KarteienPanel panel = new KarteienPanel();
+			panel.update();
+			NavigationController.getInstance().navigateTo("karteien");
 		});
-		*/
 	}
 	
 	private int getVocabs() {
@@ -108,31 +103,6 @@ public class Dictionaries extends JPanel {
 	}
 	
 	public void thisIs(int thisIs) {
-		// Remove existing MouseListeners
-	    plus.removeMouseListener(add);
-	    plus.removeMouseListener(choose);
-
-	    if (thisIs == CHOOSE) {
-	        plus.setText("");
-	        plus.setHorizontalAlignment(SwingConstants.CENTER);
-	        plus.setBounds(360, 8, 45, 45);
-	        plus.setIcon(new ImageIcon(getClass().getResource("/icons/triangleICO.png")));
-	        plus.setBorder(null);
-	        add(plus);
-
-	        plus.addMouseListener(choose);
-
-	    } else if (thisIs == ADD) {
-	        plus.setText("+");
-	        plus.setIcon(null);
-	        plus.setFont(new Font("Amiri", Font.PLAIN, 50));
-	        plus.setHorizontalAlignment(SwingConstants.CENTER);
-	        plus.setBorder(BorderFactory.createLineBorder(Color.black));
-	        plus.setBounds(360, 8, 45, 45);
-	        add(plus);
-
-	        plus.addMouseListener(add);
-	    }
 	}
 
 	

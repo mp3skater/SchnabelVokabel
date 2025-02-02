@@ -17,4 +17,7 @@ public class SettingsPanel extends BasePanel {
         add(reverseLang);
         add(checkCaps);
     }
+
+    @Override
+    public void update() {}
 }

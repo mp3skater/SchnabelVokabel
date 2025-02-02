@@ -10,4 +10,7 @@ public class ExportScreenPanel extends BasePanel {
         JTextArea exportArea = new JTextArea();
         exportArea.setEditable(false);
     }
+
+    @Override
+    public void update() {}
 }

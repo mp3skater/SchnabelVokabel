@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NavigationController {
     private static NavigationController instance;
@@ -11,14 +13,16 @@ public class NavigationController {
     private JPanel parent;
     private final Deque<String> history = new ArrayDeque<>();
     private String currentCard;
+    private Map<String, Updatable> cards = new HashMap<>();
 
     private NavigationController() {}
 
-    public static void initialize(CardLayout layout, JPanel parent, String initialCard) {
+    public static void initialize(CardLayout layout, JPanel parent, String initialCard, Map<String, Updatable> cards) {
         instance = new NavigationController();
         instance.layout = layout;
         instance.parent = parent;
         instance.currentCard = initialCard;
+        instance.cards = cards;
     }
 
     public static NavigationController getInstance() {
@@ -29,6 +33,10 @@ public class NavigationController {
         history.push(currentCard);
         currentCard = newCard;
         layout.show(parent, newCard);
+        Updatable current = cards.get(currentCard);
+        if (current != null) {
+            current.update();
+        }
     }
 
     public void goBack() {
@@ -36,6 +44,10 @@ public class NavigationController {
             String previous = history.pop();
             currentCard = previous;
             layout.show(parent, previous);
+            Updatable current = cards.get(currentCard);
+            if (current != null) {
+                current.update();
+            }
         }
     }
 }

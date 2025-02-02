@@ -1,8 +1,13 @@
 package net.mp3skater.schnabelvokabel.view.panels;
 
+import net.mp3skater.schnabelvokabel.model.AppState;
+import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdateien.src.net.tfobz.vokabeltrainer.model.Lernkartei;
+import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdateien.src.net.tfobz.vokabeltrainer.model.VokabeltrainerDB;
 import net.mp3skater.schnabelvokabel.view.elements.BaseButton;
+import net.mp3skater.schnabelvokabel.view.elements.DictionaryButton;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Objects;
 
 public class TrainMenuPanel extends BasePanel {
@@ -21,15 +26,34 @@ public class TrainMenuPanel extends BasePanel {
         BaseButton importBtn = new BaseButton("Import", 45, buttonY);
         importBtn.addActionListener(e -> NavigationController.getInstance().navigateTo("import"));
 
-        BaseButton newBtn = new BaseButton("New", 45, buttonY + distance);
-        newBtn.addActionListener(e -> NavigationController.getInstance().navigateTo("newDictionary"));
+        BaseButton newBtn = genNewButton();
 
         BaseButton loadBtn = new BaseButton("Load", 45, buttonY + 2*distance);
-        loadBtn.addActionListener(e -> NavigationController.getInstance().navigateTo("load"));
+        loadBtn.addActionListener(e -> {
+            LoadPanel.loadDictionaries();
+            NavigationController.getInstance().navigateTo("load");
+        });
 
         add(importBtn);
         add(newBtn);
         add(loadBtn);
         add(logo);
     }
+
+    private BaseButton genNewButton() {
+        BaseButton newBtn = new BaseButton("New", 45, buttonY + distance);
+        newBtn.addActionListener(e -> {
+            Lernkartei kart = new Lernkartei(-1, "Neue Kartei", "lang1", "lang2",
+                    AppState.getInstance().isReverseLanguage(),
+                    AppState.getInstance().isCheckCapitalization());
+            VokabeltrainerDB.hinzufuegenLernkartei(kart);
+            LoadPanel.addDictionaryToList(new DictionaryButton(new Rectangle(LoadPanel.x, LoadPanel.y - 70, LoadPanel.width, LoadPanel.height),
+                    kart.getNummer(), kart.getBeschreibung(), kart.getWortEinsBeschreibung(),
+                    kart.getWortZweiBeschreibung(), this, kart, null));
+        });
+        return newBtn;
+    }
+
+    @Override
+    public void update() {}
 }

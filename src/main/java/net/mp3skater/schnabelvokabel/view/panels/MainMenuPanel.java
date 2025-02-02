@@ -9,7 +9,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.Objects;
 
-public class MainMenuPanel extends JPanel {
+public class MainMenuPanel extends JPanel implements Updatable {
     final int buttonY = 450;
     final int distance = 90;
 
@@ -38,4 +38,7 @@ public class MainMenuPanel extends JPanel {
         add(exportBtn);
         add(settingsBtn);
     }
+
+    @Override
+    public void update() {}
 }

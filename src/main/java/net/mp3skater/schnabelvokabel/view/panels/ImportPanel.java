@@ -4,6 +4,7 @@ import net.mp3skater.schnabelvokabel.model.AppState;
 import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdateien.src.net.tfobz.vokabeltrainer.model.Lernkartei;
 import net.mp3skater.schnabelvokabel.model.RohdateienJava.RohdateienJava.Rohdateien.src.net.tfobz.vokabeltrainer.model.VokabeltrainerDB;
 import net.mp3skater.schnabelvokabel.view.elements.Colors;
+import net.mp3skater.schnabelvokabel.view.elements.DictionaryButton;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -104,7 +105,7 @@ public class ImportPanel extends BasePanel {
 							AppState.getInstance().isCheckCapitalization());
 			if (validateInputs() && VokabeltrainerDB.hinzufuegenLernkartei(kartei) == 0
 								&& VokabeltrainerDB.importierenKarten(kartei.getNummer(), selectedFile.getPath()) == 0) {
-				Dictionaries dick = new Dictionaries(new Rectangle(LoadPanel.x, LoadPanel.y - 70, LoadPanel.width, LoadPanel.height),
+				DictionaryButton dick = new DictionaryButton(new Rectangle(LoadPanel.x, LoadPanel.y - 70, LoadPanel.width, LoadPanel.height),
 								kartei.getNummer(), kartei.getBeschreibung(), kartei.getWortEinsBeschreibung(),
 								kartei.getWortZweiBeschreibung(), this, kartei, selectedFile);
 				LoadPanel.addDictionaryToList(dick);
@@ -218,4 +219,7 @@ public class ImportPanel extends BasePanel {
 	public File getSelectedFile() {
 		return selectedFile;
 	}
+
+	@Override
+	public void update() {}
 }

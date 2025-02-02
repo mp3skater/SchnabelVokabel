@@ -2,9 +2,10 @@ package net.mp3skater.schnabelvokabel;
 
 import net.mp3skater.schnabelvokabel.model.AppState;
 import net.mp3skater.schnabelvokabel.view.panels.*;
-
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static AppState appState;
@@ -20,18 +21,39 @@ public class Main {
 
             appState = AppState.getInstance();
 
-            mainPanel.add(new MainMenuPanel(), "mainMenu");
-            mainPanel.add(new SettingsPanel(), "settings");
-            mainPanel.add(new TrainMenuPanel(), "trainMenu");
-            mainPanel.add(new ImportPanel(), "import");
-            mainPanel.add(new LoadPanel(), "load");
-//            mainPanel.add(new NewDictionaryPanel(), "newDictionary");
-//            mainPanel.add(new ChooseDictionaryPanel(), "chooseDictionary");
-//            mainPanel.add(new TrainingModePanel(), "trainingMode");
-//            mainPanel.add(new WordManagementPanel(), "wordManagement");
-            mainPanel.add(new ExportScreenPanel(), "exportScreen");
+            // Create panel instances
+            MainMenuPanel mainMenuPanel = new MainMenuPanel();
+            SettingsPanel settingsPanel = new SettingsPanel();
+            TrainMenuPanel trainMenuPanel = new TrainMenuPanel();
+            ImportPanel importPanel = new ImportPanel();
+            LoadPanel loadPanel = new LoadPanel();
+            TrainingModePanel trainingModePanel = new TrainingModePanel();
+            KarteienPanel karteienPanel = new KarteienPanel();
+            ExportScreenPanel exportScreenPanel = new ExportScreenPanel();
 
-            NavigationController.initialize(cardLayout, mainPanel, "mainMenu");
+            // Add panels to the main panel with their respective names
+            mainPanel.add(mainMenuPanel, "mainMenu");
+            mainPanel.add(settingsPanel, "settings");
+            mainPanel.add(trainMenuPanel, "trainMenu");
+            mainPanel.add(importPanel, "import");
+            mainPanel.add(loadPanel, "load");
+            mainPanel.add(trainingModePanel, "trainingMode");
+            mainPanel.add(karteienPanel, "karteien");
+            mainPanel.add(exportScreenPanel, "exportScreen");
+
+            // Create a map from card names to Updatable panels
+            Map<String, Updatable> updatableCards = new HashMap<>();
+            updatableCards.put("mainMenu", mainMenuPanel);
+            updatableCards.put("settings", settingsPanel);
+            updatableCards.put("trainMenu", trainMenuPanel);
+            updatableCards.put("import", importPanel);
+            updatableCards.put("load", loadPanel);
+            updatableCards.put("trainingMode", trainingModePanel);
+            updatableCards.put("karteien", karteienPanel);
+            updatableCards.put("exportScreen", exportScreenPanel);
+
+            // Initialize NavigationController with the map
+            NavigationController.initialize(cardLayout, mainPanel, "mainMenu", updatableCards);
             cardLayout.show(mainPanel, "mainMenu");
 
             frame.add(mainPanel);
